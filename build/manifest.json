@@ -6,15 +6,24 @@
   "minPlatformVersion": "101",
   "icon": "/Common/logo.png",
   "features": [
-    { "name": "system.prompt" },
-    { "name": "system.router" },
-    { "name": "system.shortcut" }
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.shortcut"
+    }
   ],
   "permissions": [
-    { "origin": "*" }
+    {
+      "origin": "*"
+    }
   ],
   "config": {
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "debug": false
   },
   "router": {
     "entry": "Demo",
