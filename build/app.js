@@ -1,1 +1,196 @@
-!function(){var e=function(){return function(e){function t(n){if(o[n])return o[n].exports;var a=o[n]={exports:{},id:n,loaded:!1};return e[n].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var o={};return t.m=e,t.c=o,t.p="",t(0)}({0:function(e,t,o){var n=o(10);$app_define$("@app-application/app",[],function(e,t,o){n(o,t,e),t.__esModule&&t.default&&(o.exports=t.default)}),$app_bootstrap$("@app-application/app",{packagerVersion:"0.0.5"})},10:function(e,t,o){e.exports=function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var r=o(11),s=a(r);t.default={showMenu:s.default.showMenu,createShortcut:s.default.createShortcut},(t.default||e.exports).manifest={package:"com.bzh.dytt",name:"电影天堂",versionName:"1.0.0",versionCode:"1",minPlatformVersion:"101",icon:"/Common/logo.png",features:[{name:"system.prompt"},{name:"system.router"},{name:"system.shortcut"}],permissions:[{origin:"*"}],config:{logLevel:"debug"},router:{entry:"Demo",pages:{Demo:{component:"index"},DemoDetail:{component:"index"},About:{component:"index"}}},display:{titleBarBackgroundColor:"#f2f2f2",titleBarTextColor:"#414141",menu:!0,pages:{Demo:{titleBarText:"示例页",menu:!1},DemoDetail:{titleBarText:"详情页"},About:{menu:!1}}}}}},11:function(e,t){"use strict";function o(){var e=$app_require$("@app-module/system.prompt"),t=$app_require$("@app-module/system.router"),o=$app_require$("@app-module/system.app").getInfo();e.showContextMenu({itemList:["保存桌面","关于","取消"],success:function(a){switch(a.index){case 0:n();break;case 1:t.push({uri:"/About",params:{name:o.name,icon:o.icon}});break;case 2:break;default:e.showToast({message:"error"})}}})}function n(){var e=$app_require$("@app-module/system.prompt"),t=$app_require$("@app-module/system.shortcut");t.hasInstalled({success:function(o){o?e.showToast({message:"已创建桌面图标"}):t.install({success:function(){e.showToast({message:"成功创建桌面图标"})},fail:function(t,o){e.showToast({message:o+": "+t})}})}})}Object.defineProperty(t,"__esModule",{value:!0}),t.default={showMenu:o,createShortcut:n}}})};return"undefined"==typeof window?e():(window.createAppHandler=e,void(global.manifest={package:"com.bzh.dytt",name:"电影天堂",versionName:"1.0.0",versionCode:"1",minPlatformVersion:"101",icon:"/Common/logo.png",features:[{name:"system.prompt"},{name:"system.router"},{name:"system.shortcut"}],permissions:[{origin:"*"}],config:{logLevel:"debug"},router:{entry:"Demo",pages:{Demo:{component:"index"},DemoDetail:{component:"index"},About:{component:"index"}}},display:{titleBarBackgroundColor:"#f2f2f2",titleBarTextColor:"#414141",menu:!0,pages:{Demo:{titleBarText:"示例页",menu:!1},DemoDetail:{titleBarText:"详情页"},About:{menu:!1}}}}))}();
+(function(){
+      
+  var createAppHandler = function() {
+    return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	var $app_script$ = __webpack_require__(7)
+	
+	$app_define$('@app-application/app', [], function($app_require$, $app_exports$, $app_module$){
+	     $app_script$($app_module$, $app_exports$, $app_require$)
+	     if ($app_exports$.__esModule && $app_exports$.default) {
+	            $app_module$.exports = $app_exports$.default
+	        }
+	})
+	
+	$app_bootstrap$('@app-application/app',{ packagerVersion: '0.0.5'})
+
+
+/***/ },
+
+/***/ 7:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(module, exports, $app_require$){'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _util = __webpack_require__(8);
+	
+	var _util2 = _interopRequireDefault(_util);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  onCreate: function onCreate() {
+	    console.info('Application onCreate');
+	  },
+	  onDestroy: function onDestroy() {
+	    console.info('Application onDestroy');
+	  },
+	  method1: function method1() {
+	    console.info('这是APP的方法');
+	  },
+	
+	  data1: {
+	    name: '这是APP存的数据'
+	  },
+	  showMenu: _util2.default.showMenu,
+	  createShortcut: _util2.default.createShortcut
+	};
+	(exports.default || module.exports).manifest = {"package":"com.bzh.dytt.quick","name":"电影天堂","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"debug","name":"biezhihua"},"router":{"entry":"Home","pages":{"Home":{"component":"index"},"VideoDetail":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Home":{"titleBarText":"电影天堂","menu":false},"VideoDetail":{"titleBarText":"详情页"}}}};
+	}
+
+/***/ },
+
+/***/ 8:
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/**
+	 * 显示菜单
+	 */
+	function showMenu() {
+	  var prompt = $app_require$('@app-module/system.prompt');
+	  var router = $app_require$('@app-module/system.router');
+	  var appInfo = $app_require$('@app-module/system.app').getInfo();
+	  prompt.showContextMenu({
+	    itemList: ['保存桌面', '关于', '取消'],
+	    success: function success(ret) {
+	      switch (ret.index) {
+	        case 0:
+	          // 保存桌面
+	          createShortcut();
+	          break;
+	        case 1:
+	          // 关于
+	          router.push({
+	            uri: '/About',
+	            params: {
+	              name: appInfo.name,
+	              icon: appInfo.icon
+	            }
+	          });
+	          break;
+	        case 2:
+	          // 取消
+	          break;
+	        default:
+	          prompt.showToast({
+	            message: 'error'
+	          });
+	      }
+	    }
+	  });
+	}
+	
+	/**
+	 * 创建桌面图标
+	 * 注意：使用加载器测试`创建桌面快捷方式`功能时，请先在`系统设置`中打开`应用加载器`的`桌面快捷方式`权限
+	 */
+	function createShortcut() {
+	  var prompt = $app_require$('@app-module/system.prompt');
+	  var shortcut = $app_require$('@app-module/system.shortcut');
+	  shortcut.hasInstalled({
+	    success: function success(ret) {
+	      if (ret) {
+	        prompt.showToast({
+	          message: '已创建桌面图标'
+	        });
+	      } else {
+	        shortcut.install({
+	          success: function success() {
+	            prompt.showToast({
+	              message: '成功创建桌面图标'
+	            });
+	          },
+	          fail: function fail(errmsg, errcode) {
+	            prompt.showToast({
+	              message: errcode + ': ' + errmsg
+	            });
+	          }
+	        });
+	      }
+	    }
+	  });
+	}
+	
+	exports.default = {
+	  showMenu: showMenu,
+	  createShortcut: createShortcut
+	};
+
+/***/ }
+
+/******/ });
+  };
+  if (typeof window === "undefined") {
+    return createAppHandler();
+  }
+  else {
+    window.createAppHandler = createAppHandler
+    // H5注入manifest以获取features
+    global.manifest = {"package":"com.bzh.dytt.quick","name":"电影天堂","versionName":"1.0.0","versionCode":"1","minPlatformVersion":"101","icon":"/Common/logo.png","features":[{"name":"system.prompt"},{"name":"system.router"},{"name":"system.shortcut"}],"permissions":[{"origin":"*"}],"config":{"logLevel":"debug","name":"biezhihua"},"router":{"entry":"Home","pages":{"Home":{"component":"index"},"VideoDetail":{"component":"index"}}},"display":{"titleBarBackgroundColor":"#f2f2f2","titleBarTextColor":"#414141","menu":true,"pages":{"Home":{"titleBarText":"电影天堂","menu":false},"VideoDetail":{"titleBarText":"详情页"}}}};
+  }
+})();
+//# sourceMappingURL=app.js.map

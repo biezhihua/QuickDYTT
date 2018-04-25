@@ -1,0 +1,94 @@
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="demo-page">
+    <text class="title">欢迎打开{{title}}</text>
+    <!-- 点击跳转详情页 -->
+    <input class="btn" type="button" value="跳转到详情页·" onclick="routeDetail" />
+  </div>
+</template>
+
+<style>
+  .demo-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .btn {
+    width: 550px;
+    height: 86px;
+    margin-top: 75px;
+    border-radius: 43px;
+    background-color: #09ba07;
+    font-size: 30px;
+    color: #ffffff;
+  }
+</style>
+
+<script>
+  import router from '@system.router'
+
+  export default {
+    // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+    private: {
+      title: '示例页面',
+      lcList: []
+    },
+
+    onInit() {
+      this.$page.setTitleBar({ text: '生命周期' })
+      this.lcList.push('onInit')
+      console.info(`触发：onInit`)
+      console.info(`执行：获取ViewModel的lcList属性：${this.lcList}`)   // 执行：获取ViewModel的lcList属性：onInit
+      // $app信息
+      console.info(`获取：manifest.json的config.data的数据：${this.$app.$data}`)
+      console.info(`获取：APP文件中的数据：${this.$app.$def.data1.name}`)
+      console.info(`执行：APP文件中的方法`, this.$app.$def.method1())
+
+    },
+    onReady () {
+      this.lcList.push('onReady')
+      console.info(`触发：onReady`)
+      // console.info(`执行：获取模板节点：${this.$rootElement()}`)   // 执行：获取模板节点：<div attr={} style={"flexDirection":"column"}>...</div>
+    },
+    onShow () {
+      this.lcList.push('onShow')
+      console.info(`触发：onShow`)
+      console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // true
+    },
+    onHide () {
+      this.lcList.push('onHide')
+      console.info(`触发：onHide`)
+      console.info(`执行：获取页面显示状态属性：${this.$visible}`)  // false
+    },
+    onDestroy () {
+      console.info(`触发：onDestroy`)
+      console.info(`执行：页面要被销毁，销毁状态：${this.$valid}，应该做取消接口订阅监听的操作: geolocation.unsubscribe()`)    // true，即将销毁
+      setTimeout(function () {
+        console.info(`执行：页面已被销毁，不会执行`)                // 页面已销毁，不会执行
+      }.bind(this), 0)
+    },
+    onBackPress () {
+      console.info(`触发：onBackPress`)
+
+      // true：表示自己处理；否则默认返回上一页
+      // return true
+    },
+    onMenuPress () {
+      this.lcList.push('onMenuPress')
+
+      console.info(`触发：onMenuPress`)
+    },
+    routeDetail () {
+      // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+      router.push ({
+        uri: '/VideoDetail'
+      })
+    }
+  }
+</script>

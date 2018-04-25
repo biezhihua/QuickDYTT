@@ -1,5 +1,5 @@
 {
-  "package": "com.bzh.dytt",
+  "package": "com.bzh.dytt.quick",
   "name": "电影天堂",
   "versionName": "1.0.0",
   "versionCode": "1",
@@ -14,18 +14,18 @@
     { "origin": "*" }
   ],
   "config": {
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "data": {
+      "name":"biezhihua"
+    }
   },
   "router": {
-    "entry": "Demo",
+    "entry": "Home",
     "pages": {
-      "Demo": {
+      "Home": {
         "component": "index"
       },
-      "DemoDetail": {
-        "component": "index"
-      },
-      "About": {
+      "VideoDetail": {
         "component": "index"
       }
     }
@@ -35,15 +35,12 @@
     "titleBarTextColor": "#414141",
     "menu": true,
     "pages": {
-      "Demo": {
-        "titleBarText": "示例页",
+      "Home": {
+        "titleBarText": "电影天堂",
         "menu": false
       },
-      "DemoDetail": {
+      "VideoDetail": {
         "titleBarText": "详情页"
-      },
-      "About": {
-        "menu": false
       }
     }
   }
