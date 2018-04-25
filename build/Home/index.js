@@ -75,6 +75,40 @@
 	  ],
 	  "children": [
 	    {
+	      "type": "div",
+	      "attr": {},
+	      "classList": [
+	        "tutorial-page"
+	      ],
+	      "children": [
+	        {
+	          "type": "text",
+	          "attr": {
+	            "id": "elNode1",
+	            "disabled": "false",
+	            "value": "组件节点1"
+	          },
+	          "id": "elNode1",
+	          "classList": function () {return [this.elClassName+1]},
+	          "events": {
+	            "click": "onClickHandler"
+	          }
+	        },
+	        {
+	          "type": "text",
+	          "attr": {
+	            "id": "elNode2",
+	            "value": "组件节点2"
+	          },
+	          "id": "elNode2",
+	          "classList": function () {return ['class-static-1', this.elClassName+2]},
+	          "events": {
+	            "click": function (evt) {this.onClickHandler2('参数1',this.argName,evt)}
+	          }
+	        }
+	      ]
+	    },
+	    {
 	      "type": "text",
 	      "attr": {
 	        "value": function () {return '欢迎打开' + (this.title)}
@@ -104,14 +138,101 @@
 /***/ function(module, exports) {
 
 	module.exports = {
+	  ".tutorial-page": {
+	    "alignItems": "center",
+	    "flexDirection": "column"
+	  },
+	  "text": {
+	    "color": "#0000FF"
+	  },
+	  ".title": {
+	    "color": "#00FF00",
+	    "fontWeight": "bold",
+	    "fontSize": "40px",
+	    "textAlign": "center"
+	  },
+	  "#title": {
+	    "color": "#00A000",
+	    "fontWeight": "bold"
+	  },
+	  ".tutorial-page text": {
+	    "fontSize": "42px",
+	    "_meta": {
+	      "ruleDef": [
+	        {
+	          "t": "a",
+	          "n": "class",
+	          "i": false,
+	          "a": "element",
+	          "v": "tutorial-page"
+	        },
+	        {
+	          "t": "d"
+	        },
+	        {
+	          "t": "t",
+	          "n": "text"
+	        }
+	      ]
+	    }
+	  },
+	  ".tutorial-page > .item": {
+	    "flexShrink": 0,
+	    "justifyContent": "center",
+	    "width": "200px",
+	    "height": "100px",
+	    "marginTop": "10px",
+	    "marginRight": "10px",
+	    "marginBottom": "10px",
+	    "marginLeft": "10px",
+	    "backgroundColor": "#FF0000",
+	    "_meta": {
+	      "ruleDef": [
+	        {
+	          "t": "a",
+	          "n": "class",
+	          "i": false,
+	          "a": "element",
+	          "v": "tutorial-page"
+	        },
+	        {
+	          "t": "child"
+	        },
+	        {
+	          "t": "a",
+	          "n": "class",
+	          "i": false,
+	          "a": "element",
+	          "v": "item"
+	        }
+	      ]
+	    }
+	  },
+	  ".tutorial-page > text": {
+	    "textDecoration": "underline",
+	    "_meta": {
+	      "ruleDef": [
+	        {
+	          "t": "a",
+	          "n": "class",
+	          "i": false,
+	          "a": "element",
+	          "v": "tutorial-page"
+	        },
+	        {
+	          "t": "child"
+	        },
+	        {
+	          "t": "t",
+	          "n": "text"
+	        }
+	      ]
+	    }
+	  },
 	  ".demo-page": {
 	    "flexDirection": "column",
 	    "justifyContent": "center",
 	    "alignItems": "center"
-	  },
-	  ".title": {
-	    "fontSize": "40px",
-	    "textAlign": "center"
 	  },
 	  ".btn": {
 	    "width": "550px",
@@ -145,9 +266,21 @@
 	exports.default = {
 	  private: {
 	    title: '示例页面',
-	    lcList: []
+	    lcList: [],
+	    list: [{ name: 'aa' }, { name: 'bb' }],
+	    elClassName: 'class-dynamic',
+	    argName: '动态参数'
 	  },
+	  onClickHandler: function onClickHandler(evt) {
+	    console.info('\u89E6\u53D1\u4E8B\u4EF6\uFF1A\u7C7B\u578B\uFF1A' + evt.type + ', \u8BE6\u60C5\uFF1A ' + JSON.stringify(evt.detail));
 	
+	    if (evt.target) {
+	      console.info('\u89E6\u53D1\u4E8B\u4EF6\uFF1A\u8282\u70B9\uFF1A' + evt.target.id + ', ' + evt.target.attr.disabled);
+	    }
+	  },
+	  onClickHandler2: function onClickHandler2(arg1, arg2, evt) {
+	    console.info('\u89E6\u53D1\u4E8B\u4EF6\uFF1A\u7C7B\u578B\uFF1A' + evt.type + ', \u53C2\u6570\uFF1A ' + arg1 + ', ' + arg2);
+	  },
 	  onInit: function onInit() {
 	    this.$page.setTitleBar({ text: '生命周期' });
 	    this.lcList.push('onInit');

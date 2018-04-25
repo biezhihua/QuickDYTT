@@ -14,10 +14,7 @@
     { "origin": "*" }
   ],
   "config": {
-    "logLevel": "debug",
-    "data": {
-      "name":"biezhihua"
-    }
+    "logLevel": "debug"
   },
   "router": {
     "entry": "Home",

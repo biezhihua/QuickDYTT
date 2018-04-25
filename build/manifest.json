@@ -23,9 +23,6 @@
   ],
   "config": {
     "logLevel": "debug",
-    "data": {
-      "name": "biezhihua"
-    },
     "debug": true
   },
   "router": {
